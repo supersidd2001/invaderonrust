@@ -1,19 +1,34 @@
-name: Rust
+name: Rust CI
 
 on:
   push:
-    branches: [ master ]
+    branches:
+      - invaderonrust  # Replace with your main branch name
   pull_request:
-    branches: [ master ]
+    branches:
+      - invaderonrust  # Replace with your main branch name
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v2
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Set up Rust
+      uses: actions-rs/toolchain@v1
+      with:
+        toolchain: stable
+        override: true
+
     - name: Build
       run: cargo build --verbose
-    - name: Run
-      run: cargo run
+
+    - name: Test
+      run: cargo test --verbose
+
+    - name: Run Application
+      run: cargo run --verbose
+
+  # Add more jobs here if needed for deployment, code analysis, etc.
