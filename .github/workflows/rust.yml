@@ -3,10 +3,10 @@ name: Rust CI
 on:
   push:
     branches:
-      - invaderonrust  # Replace with your main branch name
+      - main  # Replace with your main branch name
   pull_request:
     branches:
-      - invaderonrust  # Replace with your main branch name
+      - main  # Replace with your main branch name
 
 jobs:
   build:
